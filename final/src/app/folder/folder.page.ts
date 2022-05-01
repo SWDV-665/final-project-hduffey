@@ -1,0 +1,31 @@
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, RouterEvent } from '@angular/router';
+
+@Component({
+  selector: 'app-folder',
+  templateUrl: './folder.page.html',
+  styleUrls: ['./folder.page.scss'],
+})
+export class FolderPage implements OnInit {
+  public folder: string;
+
+  pages = [
+    {
+      title: 'Profile',
+      url: 'folder/profile'
+    },
+    {
+      title: 'Local',
+      url: 'folder/local'
+    }
+  ];
+
+
+
+  constructor(private activatedRoute: ActivatedRoute) {};
+
+  ngOnInit() {
+    this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+  }
+
+}

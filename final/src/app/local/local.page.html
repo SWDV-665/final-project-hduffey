@@ -1,0 +1,84 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    <ion-menu-toggle></ion-menu-toggle>
+    <h2 class="ion-margin-start"> Match Type: {{ match }}</h2>
+
+    <ion-card *ngFor="let player of players; let i = index;">
+      <ion-card-header>
+        <ion-card-title style="text-align:center;">{{player.name}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content style="text-align: center;">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="1"offset="1">
+              <ion-button (click)="damage(i)" color="danger" size="small" icon-start>
+                <ion-icon name="heart-dislike"></ion-icon>
+              </ion-button>
+            </ion-col>
+
+            <ion-col size="4" offset="2" style="text-align: center;"><h3>Health: {{player.health}}</h3></ion-col>
+
+            <ion-col size="1">
+              <ion-button (click)="addHealth(i)" color="success" size="small" icon-start>
+                <ion-icon name="heart"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="1"offset="1">
+              <ion-button (click)="minusPoison(i)" color="danger" size="small" icon-start>
+                <ion-icon name="heart-dislike"></ion-icon>
+              </ion-button>
+            </ion-col>
+
+            <ion-col size="4" offset="2" style="text-align: center;"><h3>Poison: {{player.poison}}</h3></ion-col>
+
+            <ion-col size="1">
+              <ion-button (click)="addPoison(i)" color="success" size="small" icon-start>
+                <ion-icon name="heart"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="1"offset="1">
+              <ion-button (click)="minusCmdDmg(i)" color="danger" size="small" icon-start>
+                <ion-icon name="heart-dislike"></ion-icon>
+              </ion-button>
+            </ion-col>
+
+            <ion-col size="4" offset="2" style="text-align: center;"><h3>Command Dmg: {{player.cmdDmg}}</h3></ion-col>
+
+            <ion-col class="ion-align-self-end" size="1">
+              <ion-button (click)="addCmdDmg(i)" color="success" size="small" icon-start>
+                <ion-icon name="heart"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button (click)="addPlayer()">
+        <ion-icon name="duplicate-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="optionSheet()">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  
+  
+  </ion-content>
+</ion-app>
